@@ -1,7 +1,7 @@
 #
 # Build
 #
-FROM debian:11 AS build
+FROM debian:12 AS build
 
 RUN apt-get update && apt-get -y install maven
 
@@ -25,5 +25,7 @@ ENV CART_ENDPOINT=cart:8080
 ENV DB_HOST=mysql
 
 COPY --from=build /opt/shipping/target/shipping-1.0.jar shipping.jar
+RUN curl -s -P /opt/shipping/ -OL https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v1.32.1/opentelemetry-javaagent.jar
 
-CMD [ "java", "-XX:MaxRAMPercentage=75.0", "-jar", "shipping.jar" ]
+CMD [ "java", "-XX:MaxRAMPercentage=75.0", "-javaagent:opentelemetry-javaagent.jar", "-jar", "shipping.jar" ]
+
