@@ -19,7 +19,7 @@ spec:
       {{ end }}
       containers:
       - name: catalogue
-        image: {{ .Values.image.repo }}/rs-catalogue:{{ .Values.image.version }}
+        image: 813864300626.dkr.ecr.us-west-2.amazonaws.com/rs-catalogue:latest
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         {{- if .Values.otlp.endpoint }}

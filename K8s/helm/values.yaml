@@ -18,7 +18,8 @@ openshift: false
 ocCreateRoute: false
 
 otlp:
-  endpoint: http://tempo.monitoring:4317
+  endpoint: http://opentelemetry-collector.monitoring.svc.cluster.local:4317
+  insecure: true
 
 ######################################
 # Affinities for individual workloads
@@ -60,7 +61,7 @@ ratings: {}
 
 redis:
   # Storage class to use with redis statefulset.
-  storageClassName: standard
+  storageClassName: gp2
 
 user: {}
 

@@ -19,7 +19,7 @@ spec:
       {{ end }}
       containers:
       - name: cart
-        image: {{ .Values.image.repo }}/rs-cart:{{ .Values.image.version }}
+        image: 813864300626.dkr.ecr.us-west-2.amazonaws.com/cart:v0.1
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         {{- if .Values.otlp.endpoint }}

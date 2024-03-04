@@ -19,7 +19,7 @@ spec:
       {{ end }}
       containers:
       - name: user
-        image: {{ .Values.image.repo }}/rs-user:{{ .Values.image.version }}
+        image: 813864300626.dkr.ecr.us-west-2.amazonaws.com/rs-user:latest
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         {{- if .Values.otlp.endpoint }}
