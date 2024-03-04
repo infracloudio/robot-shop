@@ -1,3 +1,5 @@
+// OpenTelemetry
+require('./tracing');
 const bodyParser = require('body-parser');
 const express = require('express');
 const expPino = require('express-pino-logger');
@@ -13,9 +15,6 @@ const logger = pino({
 const expLogger = expPino({
     logger: logger
 });
-
-// OpenTelemetry
-require('./tracing');
 
 // MongoDB
 var db;

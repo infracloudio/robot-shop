@@ -1,3 +1,5 @@
+// OpenTelemetry
+require('./tracing');
 const fs = require('fs');
 const os = require('os');
 const bcrypt = require('bcryptjs');
@@ -23,9 +25,6 @@ const logger = pino({
 const expLogger = expPino({
     logger: logger
 });
-
-// OpenTelemetry
-require('./tracing');
 
 // Redis
 var redisHost = process.env.REDIS_HOST || 'redis';

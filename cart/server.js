@@ -1,3 +1,5 @@
+// OpenTelemetry
+require('./tracing');
 const axios = require('axios');
 const bodyParser = require('body-parser');
 const express = require('express');
@@ -15,9 +17,6 @@ const counter = new promClient.Counter({
     help: 'running count of items added to cart',
     registers: [register]
 });
-
-// OpenTelemetry
-require('./tracing');
 
 // Redis
 var redisConnected = false;
