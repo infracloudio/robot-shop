@@ -18,11 +18,6 @@ spec:
     port: 9113
   selector:
     service: web
-  {{ if .Values.nodeport }}
-  type: NodePort
-  {{ else }}
-  type: LoadBalancer
-  {{ end }}
 ---
 {{if .Values.ocCreateRoute}}
 apiVersion: route.openshift.io/v1
