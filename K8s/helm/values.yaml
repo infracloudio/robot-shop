@@ -30,15 +30,56 @@ otlp:
 #   tolerations: []
 ######################################
 
-cart: {}
+cart:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            service: cart
+        topologyKey: "kubernetes.io/hostname"
+  nodeSelector:
+    workload: app
 
-catalogue: {}
+catalogue: 
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            service: catalogue
+        topologyKey: "kubernetes.io/hostname"
+  nodeSelector:
+    workload: app
 
-dispatch: {}
+dispatch: 
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            service: dispatch
+        topologyKey: "kubernetes.io/hostname"
+  nodeSelector:
+    workload: app
 
-mongodb: {}
+mongodb:
+  tolerations:
+    - key: "persistent"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+  nodeSelector:
+    workload: persistent
 
-mysql: {}
+mysql:
+  tolerations:
+    - key: "persistent"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+  nodeSelector:
+    workload: persistent
 
 payment:
   # Alternative payment gateway URL
@@ -48,21 +89,80 @@ payment:
 #  failureHour: 20
 #  failureFromMinute: 30
 #  failureTillMinute: 60
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            service: payment
+        topologyKey: "kubernetes.io/hostname"
+  nodeSelector:
+    workload: app
 
-shipping: {}
+shipping: 
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            service: shipping
+        topologyKey: "kubernetes.io/hostname"
+  nodeSelector:
+    workload: app
 #  failureHour: null
 #  failureFromMinute: 0
 #  failureTillMinute: 15
 
 rabbitmq:
   enableExporter: true
+  tolerations:
+    - key: "persistent"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+  nodeSelector:
+    workload: persistent
 
-ratings: {}
+ratings: 
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            service: ratings
+        topologyKey: "kubernetes.io/hostname"
+  nodeSelector:
+    workload: app
 
 redis:
   # Storage class to use with redis statefulset.
   storageClassName: gp2
+  tolerations:
+    - key: "persistent"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+  nodeSelector:
+    workload: persistent
 
-user: {}
+user: 
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            service: user
+        topologyKey: "kubernetes.io/hostname"
+  nodeSelector:
+    workload: app
 
-web: {}
+web:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            service: web
+        topologyKey: "kubernetes.io/hostname"
+  nodeSelector:
+    workload: app
