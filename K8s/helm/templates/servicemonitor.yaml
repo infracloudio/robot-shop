@@ -3,6 +3,8 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ .Release.Name }}
+  labels:
+    release:  prometheus-stack
 spec:
   endpoints:
     - port: http
@@ -19,6 +21,8 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: rabbitmq-detailed
+  labels:
+    release:  prometheus-stack
 spec:
   endpoints:
     - interval: 30s
