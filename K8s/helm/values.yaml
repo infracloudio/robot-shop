@@ -31,6 +31,7 @@ otlp:
 ######################################
 
 cart:
+  replicas: 2
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -42,6 +43,7 @@ cart:
     workload: app
 
 catalogue: 
+  replicas: 2
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -53,6 +55,7 @@ catalogue:
     workload: app
 
 dispatch: 
+  replicas: 2
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -82,6 +85,7 @@ mysql:
     workload: persistent
 
 payment:
+  replicas: 2
   # Alternative payment gateway URL
   # Default is https://www.paypal.com
   gateway: null
@@ -100,6 +104,7 @@ payment:
     workload: app
 
 shipping: 
+  replicas: 2
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -124,6 +129,7 @@ rabbitmq:
     workload: persistent
 
 ratings: 
+  replicas: 2
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -145,7 +151,8 @@ redis:
   nodeSelector:
     workload: persistent
 
-user: 
+user:
+  replicas: 2 
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -157,6 +164,7 @@ user:
     workload: app
 
 web:
+  replicas: 2
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:

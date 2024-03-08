@@ -6,7 +6,7 @@ metadata:
     service: payment
     stage: prod
 spec:
-  replicas: 1
+  replicas:  {{ .Values.payment.replicas }}
   selector:
     matchLabels:
       service: payment
