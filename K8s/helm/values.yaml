@@ -119,6 +119,7 @@ shipping:
 #  failureTillMinute: 15
 
 rabbitmq:
+  replicas: 3
   enableExporter: true
   tolerations:
     - key: "persistent"
