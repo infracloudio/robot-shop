@@ -25,18 +25,22 @@ metadata:
     release:  prometheus-stack
 spec:
   endpoints:
+    - port: prometheus
+      scheme: http
+      interval: 15s
+      scrapeTimeout: 14s
     - interval: 30s
       params:
         family:
           - queue_coarse_metrics
           - queue_consumer_count
+          - queue_metrics
       path: /metrics/detailed
-      port: http-metrics
+      port: prometheus
   namespaceSelector:
     matchNames:
       - {{ .Release.Namespace }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: robot-shop
-      service: rabbitmq
+      app.kubernetes.io/component: rabbitmq
 {{- end }}
