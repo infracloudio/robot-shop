@@ -16,7 +16,7 @@ type: Opaque
 apiVersion: rabbitmq.com/v1beta1
 kind: RabbitmqCluster
 metadata:
-  name: rabbitmq-cluster
+  name: rabbitmq
   labels:
     service: rabbitmq
 spec:
